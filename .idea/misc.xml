@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/drawable/ic_add.xml" value="0.339" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/layout/date_time_dialog.xml" value="0.3723958333333333" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/layout/date_time_picker.xml" value="0.3723958333333333" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/layout/fragment_add.xml" value="0.33559782608695654" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/layout/fragment_home.xml" value="0.25679347826086957" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/layout/to_do_row.xml" value="0.1" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/menu/menu.xml" value="0.3723958333333333" />
+        <entry key="..\:/Users/Thiet/AndroidStudioProjects/ToDoAppExercise/app/src/main/res/menu/menu_to_add_fragment.xml" value="0.21927083333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

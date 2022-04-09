@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">To Do App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="addFragment">Add To Do</string>
+    <string name="homeFragment">List To Do</string>
+    <string name="startToDo">Add To Do</string>
+    <string name="title">Title</string>
+    <string name="note">Notes</string>
+    <string name="startTime">Start time</string>
+    <string name="endTime">End time</string>
+    <string name="btnSave">Save</string>
+    <string name="btnDelete">Delete</string>
+</resources>

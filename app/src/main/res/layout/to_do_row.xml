@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_item"
+    android:orientation="vertical"
+    android:padding="@dimen/padding">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="@dimen/add_text"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgIsDone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_done" />
+
+        <CheckBox
+            android:id="@+id/cbMarkDone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:text="Mark done"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/padding">
+
+                <TextView
+                    android:id="@+id/txtStartTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="TextView"
+                    android:textSize="@dimen/thin_text" />
+
+                <TextView
+                    android:id="@+id/txtEndTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="TextView"
+                    android:textSize="@dimen/thin_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtNotes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:maxLines="4"
+                android:text="TextView"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/height_item"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:padding="@dimen/padding">-->
+
+    <!--<ImageView-->
+    <!--    android:id="@+id/imgIsDone"-->
+    <!--    android:layout_width="0dp"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_gravity="center_vertical"-->
+    <!--    android:layout_weight="2"-->
+    <!--    android:visibility="gone"-->
+    <!--    app:srcCompat="@drawable/ic_done" />-->
+
+    <!--<CheckBox-->
+    <!--    android:id="@+id/cbMarkDone"-->
+    <!--    android:layout_width="0dp"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_gravity="center_vertical"-->
+    <!--    android:layout_weight="2"-->
+    <!--    android:text="Mark done"-->
+    <!--    android:visibility="gone" />-->
+
+    <!--<LinearLayout-->
+    <!--    android:layout_width="0dp"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:layout_weight="2"-->
+    <!--    android:orientation="vertical">-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/txtTitle"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="2"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="TextView"-->
+    <!--        android:textSize="@dimen/add_text"-->
+    <!--        android:maxLines="1"-->
+    <!--        android:textAlignment="center" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/txtStartTime"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="TextView"-->
+    <!--        android:textSize="@dimen/thin_text"-->
+    <!--        android:maxLines="1"-->
+    <!--        android:textAlignment="center" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/txtEndTime"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="TextView"-->
+    <!--        android:textSize="@dimen/thin_text"-->
+    <!--        android:maxLines="1"-->
+    <!--        android:textAlignment="center" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+    <!--    android:id="@+id/txtNotes"-->
+    <!--    android:layout_width="0dp"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:layout_weight="4"-->
+    <!--    android:gravity="center"-->
+    <!--    android:text="TextView"-->
+    <!--    android:textSize="@dimen/normal_text"-->
+    <!--    android:maxLines="4"-->
+    <!--    android:textAlignment="center" />-->
+    <!--</LinearLayout>-->
