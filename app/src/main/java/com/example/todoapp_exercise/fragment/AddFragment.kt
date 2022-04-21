@@ -11,7 +11,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.todoapp_exercise.R
-import com.example.todoapp_exercise.database.FunctionDatabase
+import com.example.todoapp_exercise.database.FirebaseRealtime
 import com.example.todoapp_exercise.model.ToDoItemModel
 import java.time.LocalDateTime
 
@@ -38,11 +38,10 @@ class AddFragment : Fragment() {
             btnDelete.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(view: View?) {
                     //TODO("Not yet implemented")
-                    val deleter = FunctionDatabase(view!!.context)
-                    val item = ToDoItemModel(arguments!!.getLong("id"), "", "", "", "", false)
-                    deleter.Delete(item)
-                    deleter.Close()
                     view?.findNavController()?.navigate(R.id.action_addFragment_to_homeFragment)
+                    val deleter = FirebaseRealtime()
+                    val item = ToDoItemModel(arguments!!.getString("id")!!, "", "", "", "", false)
+                    deleter.Delete(item)
                 }
             })
 
@@ -56,9 +55,10 @@ class AddFragment : Fragment() {
         btnSave.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 //TODO("Not yet implemented")
-                val writer = FunctionDatabase(view!!.context)
+                view?.findNavController()?.navigate(R.id.action_addFragment_to_homeFragment)
+                val writer = FirebaseRealtime()
                 val item = ToDoItemModel(
-                    if (arguments != null) arguments!!.getLong("id") else 1,
+                    (if (arguments != null) arguments!!.getString("id") else "")!!,
                     txtTitle.text.toString(),
                     txtStartTime.text.toString(),
                     txtEndTime.text.toString(),
@@ -67,9 +67,6 @@ class AddFragment : Fragment() {
                 )
                 if (arguments != null) writer.Update(item)
                 else writer.Insert(item)
-                writer.Close()
-
-                view?.findNavController()?.navigate(R.id.action_addFragment_to_homeFragment)
             }
         })
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.findNavController
 import com.example.todoapp_exercise.R
-import com.example.todoapp_exercise.database.FunctionDatabase
+import com.example.todoapp_exercise.database.FirebaseRealtime
 import com.example.todoapp_exercise.model.ToDoItemModel
 
 class ToDoAdapter(context: Context, items: List<ToDoItemModel>) : BaseAdapter() {
@@ -27,7 +27,7 @@ class ToDoAdapter(context: Context, items: List<ToDoItemModel>) : BaseAdapter() 
 
     override fun getItemId(position: Int): Long {
         //TODO("Not yet implemented")
-        return items.get(position).id
+        return position.toLong()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -55,9 +55,8 @@ class ToDoAdapter(context: Context, items: List<ToDoItemModel>) : BaseAdapter() 
                 imgIsDone.visibility = if (isChecked) View.VISIBLE else View.GONE
                 cbMarkDone.visibility = if (isChecked) View.GONE else View.VISIBLE
 
-                val update = FunctionDatabase(view.context)
+                val update = FirebaseRealtime()
                 update.Update(items.get(position))
-                update.Close()
             }
         })
 
@@ -72,7 +71,7 @@ class ToDoAdapter(context: Context, items: List<ToDoItemModel>) : BaseAdapter() 
                     ).show()
                 } else {
                     val bundle: Bundle = Bundle()
-                    bundle.putLong("id", items.get(position).id)
+                    bundle.putString("id", items.get(position).id)
                     bundle.putString("title", items.get(position).title)
                     bundle.putString("startTime", items.get(position).startTime)
                     bundle.putString("endTime", items.get(position).endTime)

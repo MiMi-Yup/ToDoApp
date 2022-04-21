@@ -66,7 +66,7 @@ class FunctionDatabase(context: Context) {
         with(cursor) {
             while (moveToNext()) {
                 val item = ToDoItemModel(
-                    getLong(getColumnIndexOrThrow(BaseColumns._ID)),
+                    getString(getColumnIndexOrThrow(BaseColumns._ID)),
                     getString(getColumnIndexOrThrow(Database.DatabaseEntry.TITLE)),
                     getString(getColumnIndexOrThrow(Database.DatabaseEntry.START_TIME)),
                     getString(getColumnIndexOrThrow(Database.DatabaseEntry.END_TIME)),

@@ -1,23 +1,23 @@
 package com.example.todoapp_exercise.fragment
 
 import android.os.Bundle
-import android.view.ContextMenu
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ListView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.todoapp_exercise.R
 import com.example.todoapp_exercise.adapter.ToDoAdapter
-import com.example.todoapp_exercise.database.FunctionDatabase
+import com.example.todoapp_exercise.database.FirebaseRealtime
 import com.example.todoapp_exercise.model.ToDoItemModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
-    private lateinit var adapter: ToDoAdapter
+    private val handler: Handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,24 +30,49 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val reader = FunctionDatabase(view?.context)
-        val objects: List<ToDoItemModel> = reader.Select()
-        reader.Close()
+        val reader = FirebaseRealtime()
 
-        if (objects.size > 0) {
-            val lvToDoItem = view.findViewById<ListView>(R.id.lvToDoItem)
-            adapter = ToDoAdapter(lvToDoItem.context, objects)
-            lvToDoItem.adapter = adapter
-        } else {
-            val txtStartToDo = view.findViewById<LinearLayout>(R.id.llStartToDo)
-            txtStartToDo.visibility = View.VISIBLE
-            txtStartToDo.setOnClickListener(addItemEvent)
+        val r: Runnable = object : Runnable {
+            override fun run() {
+                if (FirebaseRealtime.dataHasChanged) {
+                    val objects: List<ToDoItemModel> = reader.Select()
+                    Log.e("getdata", "${objects.size}")
+                    val lvToDoItem: ListView? = view?.findViewById<ListView>(R.id.lvToDoItem)
+                    val txtStartToDo: LinearLayout? = view?.findViewById<LinearLayout>(R.id.llStartToDo)
+                    if (objects.size > 0) {
+                        val adapter: ToDoAdapter = ToDoAdapter(lvToDoItem!!.context, objects)
+                        lvToDoItem?.adapter = adapter
+                        txtStartToDo!!.visibility = View.GONE
+                    } else {
+                        txtStartToDo!!.visibility = View.VISIBLE
+                        txtStartToDo!!.setOnClickListener(addItemEvent)
+                    }
+
+                    FirebaseRealtime.dataHasChanged = false
+                }
+
+                handler.postDelayed(this, 2000)
+            }
         }
+
+        handler.postDelayed(r, 2000)
 
         val fabToDoAdd = view.findViewById<FloatingActionButton>(R.id.fabAddToDo)
         fabToDoAdd.setOnClickListener(addItemEvent)
+        fabToDoAdd.setOnLongClickListener(object :View.OnLongClickListener{
+            override fun onLongClick(p0: View?): Boolean {
+                //TODO("Not yet implemented")
+                FirebaseRealtime.dataHasChanged = true
+                return true
+            }
+        })
 
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        FirebaseRealtime.dataHasChanged = true
     }
 
     private val addItemEvent: View.OnClickListener = object : View.OnClickListener {
